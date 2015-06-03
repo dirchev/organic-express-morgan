@@ -7,7 +7,7 @@ module.exports = function(plasma, dna) {
 	if(dna.logFile){
 		var accessLogStream = fs.createWriteStream(dna.logFile, {flags: 'a'})
 	}
-	app.use(morgan(dna.options, {stream: accessLogStream}));
+	app.use(morgan(dna.format, {stream: accessLogStream}));
   });
-  plasma.emit('ExpressMorgan');
+  plasma.emit(dna.emitReady);
 };
